@@ -3,16 +3,20 @@ package q_2.nu_gatepass;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import org.json.JSONException;
@@ -25,8 +29,9 @@ import java.util.HashMap;
 
 public class SFragmentUserProfile extends Fragment {
 
-    public String rUserName, rEnrollKey, rFullName, rBranch, rRoom, rContact;
-
+    public String rUserName, rEnrollKey, rFullName, rBranch, rRoom, rContact, rUserImage;
+    ImageView rUserImageView;
+    Bitmap myBitmap;
     TextView fNameII, UserNameII, EnrollmentII, BranchII, NumberII, RoomII;
     Button LogOut, OCGP;
     private AppData mSession;
@@ -49,9 +54,13 @@ public class SFragmentUserProfile extends Fragment {
         rBranch = AppData.LoggedInUser.getString("rBranch", "");
         rRoom = AppData.LoggedInUser.getString("rRoom", "");
         rContact = AppData.LoggedInUser.getString("rContact", "");
+        rUserImage = AppData.LoggedInUser.getString("rPic", "");
         Log.d("Bundle : ", "Restored.");
 
-        mSession = new AppData(getActivity());
+        rUserImageView = (ImageView) view.findViewById(R.id.rUserImageView);
+        byte[] imgBytesData = Base64.decode(rUserImage, Base64.DEFAULT);
+        myBitmap = BitmapFactory.decodeByteArray(imgBytesData, 0, imgBytesData.length);
+        rUserImageView.setImageBitmap(myBitmap);
 
         fNameII = (TextView) view.findViewById(R.id.fNameII);
         fNameII.setText(rFullName);

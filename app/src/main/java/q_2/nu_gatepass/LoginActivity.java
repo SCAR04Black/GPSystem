@@ -11,6 +11,8 @@ import android.content.IntentFilter;
 import android.content.Loader;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -41,6 +43,9 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -51,7 +56,8 @@ import java.util.Objects;
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
-    public String rPass, rUserType, rUserName, rEnrollKey, rFullName, rBranch, rJoinDate, rHostel, rRoom, rContact, rEmail, rAddress;
+    public String rPass, rUserType, rUserName, rEnrollKey, rFullName, rBranch, rJoinDate, rHostel, rRoom, rContact, rEmail,
+            rPic, rAddress;
     public String mPassword;
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
@@ -313,6 +319,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         JSONParser jsonParser = new JSONParser();
         private ProgressDialog pDialog, pDialogII;
+        GetImage getImage;
 
         @Override
         protected void onPreExecute() {
@@ -353,7 +360,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     rContact = json.getString("u_contact");
                     rEmail = json.getString("u_email");
                     rAddress = json.getString("u_address");
-                    //r_pic = json.getString("u_pic");
+                    rPic = json.getString("u_pic");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -380,6 +387,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 editor2.putString("rContact", rContact);
                 editor2.putString("rEmail", rEmail);
                 editor2.putString("rAddress", rAddress);
+                editor2.putString("rPic", rPic);
                 editor2.apply();;
 
                 Toast.makeText(LoginActivity.this, "Authenticated", Toast.LENGTH_LONG).show();

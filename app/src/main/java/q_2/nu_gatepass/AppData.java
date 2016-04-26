@@ -2,12 +2,11 @@ package q_2.nu_gatepass;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 /**
  * Created by Pradumn K Mahanta on 10-03-2016.
- */
+ **/
 public class AppData {
     public static final String ULRCheckLogin = "http://gatepass.esy.es/checklogin.php";
 
@@ -20,6 +19,8 @@ public class AppData {
     public static final String ULRGetRequestsWARDEN = "http://gatepass.esy.es/wardengetrequests.php";
 
     public static final String ULRAddGCMID = "http://gatepass.esy.es/addgcmid.php";
+
+    public static final String ULRGetImage = "http://gatepass.esy.es/getimage.php?user_name=";
 
     public static SharedPreferences LoginDetails;
 
