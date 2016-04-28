@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.List;
 
@@ -56,6 +57,7 @@ public class SFragmentViewGatepassAdapter extends RecyclerView.Adapter<SFragment
         public final TextView inTime;
         public final TextView outTime;
         public final TextView setStatus;
+        public final ImageView studentIcon;
         public GatepassListViewItem mItem;
 
         public ViewHolder(View view) {
@@ -65,6 +67,7 @@ public class SFragmentViewGatepassAdapter extends RecyclerView.Adapter<SFragment
             setStatus = (TextView) view.findViewById(R.id.setStatus);
             inTime = (TextView) view.findViewById(R.id.inTime);
             outTime = (TextView) view.findViewById(R.id.outTIme);
+            studentIcon = (ImageView) view.findViewById(R.id.studentIcon);
         }
 
         @Override

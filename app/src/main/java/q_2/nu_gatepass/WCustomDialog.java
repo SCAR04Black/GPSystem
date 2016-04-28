@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,12 +30,13 @@ public class WCustomDialog extends Dialog implements android.view.View.OnClickLi
     public Button rApprove, rReject;
     AutoCompleteTextView rReason;
     UpdateRequest updateRequest;
+    ImageView rUserImageView;
     public GatepassListViewItem mItem;
     TextView sName, sBatch, inTime, inDate, outTime, visitPurpose, visitPlace, outDate;
     String acc_type, acc_name, acc_username;
 
     public WCustomDialog(Context mContext, GatepassListViewItem mItem) {
-        super(mContext);
+        super(mContext, R.style.Theme_CustomDialog);
         this.mContext = mContext;
         this.mItem = mItem;
     }
@@ -45,9 +47,15 @@ public class WCustomDialog extends Dialog implements android.view.View.OnClickLi
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.wcustom_dialog);
 
+        rUserImageView = (ImageView) findViewById(R.id.rUserImageView);
+        GetImage getImage = new GetImage(mContext, rUserImageView);
+        getImage.execute(mItem.gp_UserName);
+
+
         AppData.LoggedInUser = PreferenceManager.getDefaultSharedPreferences(mContext);
         acc_type = AppData.LoggedInUser.getString("rUserType", "");
         acc_name = AppData.LoggedInUser.getString("rFullName", "");
+
         acc_username = AppData.LoggedInUser.getString("rUserName", "");
 
         rApprove = (Button) findViewById(R.id.rApprove);

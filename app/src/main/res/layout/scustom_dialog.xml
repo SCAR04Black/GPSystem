@@ -6,7 +6,6 @@
     android:paddingRight="40dp"
     android:orientation="vertical" >
 
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -21,13 +20,13 @@
             android:layout_height="wrap_content"
             android:textColor="#2C2C2C"
             android:text="Your Request : "
-            android:textSize="25sp"
+            android:textAppearance="@android:style/TextAppearance.Large"
             android:textStyle="bold"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:textAppearance="@android:style/TextAppearance.Large"
             android:textColor="#2C2C2C"
             android:id="@+id/sGPNo"
             android:textStyle="bold"/>
@@ -47,13 +46,13 @@
             android:textStyle="bold"
             android:id="@+id/inTimeT"
             android:textColor="#2C2C2C"
-            android:textSize="20sp"
+            android:textAppearance="@android:style/TextAppearance.Medium"
             android:text="IN Time : " />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textSize="20sp"
+            android:textAppearance="@android:style/TextAppearance.Medium"
             android:textColor="#2C2C2C"
             android:id="@+id/inTime"
             android:text="IN Time" />
@@ -73,13 +72,13 @@
             android:textStyle="bold"
             android:id="@+id/inDateT"
             android:textColor="#2C2C2C"
-            android:textSize="20sp"
+            android:textAppearance="@android:style/TextAppearance.Medium"
             android:text="IN Date : " />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textSize="20sp"
+            android:textAppearance="@android:style/TextAppearance.Medium"
             android:textColor="#2C2C2C"
             android:id="@+id/inDate"
             android:text="IN Date" />
@@ -98,13 +97,13 @@
             android:layout_height="match_parent"
             android:textStyle="bold"
             android:textColor="#2C2C2C"
-            android:textSize="20sp"
+            android:textAppearance="@android:style/TextAppearance.Medium"
             android:text="OUT Time : " />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textSize="20sp"
+            android:textAppearance="@android:style/TextAppearance.Medium"
             android:textColor="#2C2C2C"
             android:id="@+id/outTime"
             android:text="OUT Time" />
@@ -123,13 +122,13 @@
             android:layout_height="match_parent"
             android:textStyle="bold"
             android:textColor="#2C2C2C"
-            android:textSize="20sp"
+            android:textAppearance="@android:style/TextAppearance.Medium"
             android:text="OUT Date : " />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textSize="20sp"
+            android:textAppearance="@android:style/TextAppearance.Medium"
             android:textColor="#2C2C2C"
             android:id="@+id/outDate"
             android:text="OUT Date" />
@@ -148,13 +147,13 @@
             android:layout_height="match_parent"
             android:textStyle="bold"
             android:textColor="#2C2C2C"
-            android:textSize="20sp"
+            android:textAppearance="@android:style/TextAppearance.Medium"
             android:text="Visit Place : " />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textSize="20sp"
+            android:textAppearance="@android:style/TextAppearance.Medium"
             android:textColor="#2C2C2C"
             android:id="@+id/visitPlace"
             android:text="Visit Place" />
@@ -171,15 +170,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textStyle="bold"
-            android:textColor="#2C2C2C"
-            android:textSize="20sp"
-            android:text="Status : " />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textSize="20sp"
+            android:textAppearance="@android:style/TextAppearance.Medium"
             android:textStyle="bold"
             android:id="@+id/rStatus" />
     </LinearLayout>
@@ -188,11 +179,12 @@
     <AutoCompleteTextView
         android:id="@+id/rReason"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:textAlignment="center"
+        android:padding="10dp"
         android:background="@drawable/dialog_border_new"
         android:hint="No Reason"
-        android:layout_margin="15dp"
+        android:layout_margin="5dp"
         android:inputType="textEmailAddress"
         android:maxLines="1"
         android:textColor="#FF0000"
@@ -212,22 +204,24 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/dialog_border_new"
+            android:textAppearance="@android:style/TextAppearance.Medium"
             android:clickable="true"
             android:text="Cancel"
-            android:textColor="#000000"
-            android:textStyle="bold" />
+            android:padding="10dp"
+            android:textColor="#000000" />
 
         <Button
             android:id="@+id/rClose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:padding="10dp"
             android:layout_marginLeft="15dp"
             android:background="@drawable/dialog_border_new"
             android:clickable="true"
             android:text="Close"
             android:textColor="#000000"
-            android:textStyle="bold" />
+            android:textAppearance="@android:style/TextAppearance.Medium"/>
     </LinearLayout>
 
 </LinearLayout>

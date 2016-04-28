@@ -1,14 +1,21 @@
 package q_2.nu_gatepass;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Base64;
+import android.util.Log;
 import android.widget.ImageView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -18,45 +25,58 @@ import java.net.URL;
 
 public class GetImage extends AsyncTask<String, String, Bitmap>{
 
-    private ProgressDialog pDialog;
     final Context mContext;
-    ImageView imgView;
+    StringBuilder result;
+    JSONObject jObj;
+    final ImageView imageViewUser;
 
-    public GetImage(Context mContext, ImageView imgView){
+    public GetImage(Context mContext, ImageView imageViewUser){
         this.mContext = mContext;
-        this.imgView = imgView;
-    }
-
-    @Override
-    protected void onPreExecute() {
-        pDialog = new ProgressDialog(this.mContext);
-        pDialog.setMessage("Fetching Image...");
-        pDialog.setIndeterminate(false);
-        pDialog.setCancelable(false);
-        pDialog.show();
+        this.imageViewUser = imageViewUser;
     }
 
     @Override
     protected Bitmap doInBackground(String... params) {
-        Bitmap myBitmap;
+        Bitmap myBitmap = null;
         try {
-            URL url = new URL("http://gatepass.esy.es/getimage.php?user_name="+params[0]);
+            String urlfinal = "http://gatepass.esy.es/getimage.php?user_name="+params[0];
+            URL url = new URL(urlfinal);
+            Log.d("Image URL", urlfinal);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setDoInput(true);
             connection.connect();
-            InputStream input = connection.getInputStream();
-            byte[] imgBytesData = Base64.decode(input.toString(), Base64.DEFAULT);
-            myBitmap = BitmapFactory.decodeByteArray(imgBytesData, 0, imgBytesData.length);
+            InputStream in = new BufferedInputStream(connection.getInputStream());
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            result = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+            try {
+                jObj = new JSONObject(result.toString());
+                Log.d("Image", jObj.getString("u_pic"));
+                byte[] imgBytesData = Base64.decode(jObj.getString("u_pic"), Base64.DEFAULT);
+                myBitmap = BitmapFactory.decodeByteArray(imgBytesData, 0, imgBytesData.length);
+            } catch (JSONException e) {
+                Log.e("JSON Parser", "Error parsing data " + e.toString());
+            }
+
         } catch (IOException e) {
             return null;
         }
+
+
         return myBitmap;
     }
 
     protected void onPostExecute(Bitmap myBitmap) {
-        if (pDialog != null && pDialog.isShowing()) {
-            pDialog.dismiss();
+
+        if(myBitmap != null){
+            imageViewUser.setImageBitmap(myBitmap);
+            Log.d("Image Set", "TRUE");
+            Log.d("Image", myBitmap.toString());
+        }else{
+            Log.d("Image Set", "FALSE");
         }
-        this.imgView.setImageBitmap(myBitmap);
     }
 }

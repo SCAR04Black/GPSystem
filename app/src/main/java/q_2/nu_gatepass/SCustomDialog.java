@@ -32,7 +32,7 @@ public class SCustomDialog extends Dialog implements android.view.View.OnClickLi
     String acc_type, acc_name, acc_username;
 
     public SCustomDialog(Context mContext, GatepassListViewItem mItem) {
-        super(mContext);
+        super(mContext, R.style.Theme_CustomDialog);
         this.mContext = mContext;
         this.mItem = mItem;
     }
