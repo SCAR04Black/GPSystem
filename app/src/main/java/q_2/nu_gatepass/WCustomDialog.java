@@ -3,9 +3,12 @@ package q_2.nu_gatepass;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -20,6 +23,7 @@ import org.json.JSONObject;
 
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * Created by Pradumn K Mahanta on 12-04-2016.
@@ -48,15 +52,22 @@ public class WCustomDialog extends Dialog implements android.view.View.OnClickLi
         setContentView(R.layout.wcustom_dialog);
 
         rUserImageView = (ImageView) findViewById(R.id.rUserImageView);
-        GetImage getImage = new GetImage(mContext, rUserImageView);
-        getImage.execute(mItem.gp_UserName);
-
 
         AppData.LoggedInUser = PreferenceManager.getDefaultSharedPreferences(mContext);
         acc_type = AppData.LoggedInUser.getString("rUserType", "");
         acc_name = AppData.LoggedInUser.getString("rFullName", "");
-
         acc_username = AppData.LoggedInUser.getString("rUserName", "");
+
+        if(Objects.equals(AppData.LoggedInUser.getString(mItem.gp_UserName, ""), "")){
+            GetImage getImage = new GetImage(mContext, rUserImageView);
+            getImage.execute(mItem.gp_UserName);
+        }else{
+            Bitmap myBitmap;
+            String rUserImage = AppData.LoggedInUser.getString(mItem.gp_UserName, "");
+            byte[] imgBytesData = Base64.decode(rUserImage, Base64.DEFAULT);
+            myBitmap = BitmapFactory.decodeByteArray(imgBytesData, 0, imgBytesData.length);
+            rUserImageView.setImageBitmap(myBitmap);
+        }
 
         rApprove = (Button) findViewById(R.id.rApprove);
         rReject = (Button) findViewById(R.id.rReject);

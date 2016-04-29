@@ -34,7 +34,7 @@ public class SFragmentUserProfile extends Fragment {
     Bitmap myBitmap;
     TextView fNameII, UserNameII, EnrollmentII, BranchII, NumberII, RoomII;
     Button LogOut, OCGP;
-    private AppData mSession;
+    AppData mSession;
 
     private SFragmentUserProfileInteractionListener mListener;
 
@@ -74,6 +74,8 @@ public class SFragmentUserProfile extends Fragment {
         NumberII.setText(rContact);
         RoomII = (TextView) view.findViewById(R.id.RoomII);
         RoomII.setText(rRoom);
+
+        mSession = new AppData(getActivity());
 
         LogOut = (Button) view.findViewById(R.id.LogOut);
         LogOut.setOnClickListener(new View.OnClickListener() {

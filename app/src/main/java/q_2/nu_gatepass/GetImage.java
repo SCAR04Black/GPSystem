@@ -1,9 +1,11 @@
 package q_2.nu_gatepass;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.util.Base64;
 import android.util.Log;
 import android.widget.ImageView;
@@ -55,6 +57,12 @@ public class GetImage extends AsyncTask<String, String, Bitmap>{
             try {
                 jObj = new JSONObject(result.toString());
                 Log.d("Image", jObj.getString("u_pic"));
+
+                AppData.LoggedInUser = PreferenceManager.getDefaultSharedPreferences(mContext);
+                SharedPreferences.Editor editor = AppData.LoggedInUser.edit();
+                editor.putString(params[0], jObj.getString("u_pic"));
+                editor.apply();
+
                 byte[] imgBytesData = Base64.decode(jObj.getString("u_pic"), Base64.DEFAULT);
                 myBitmap = BitmapFactory.decodeByteArray(imgBytesData, 0, imgBytesData.length);
             } catch (JSONException e) {

@@ -33,7 +33,7 @@ public class WFragmentUserProfile extends Fragment {
     Bitmap myBitmap;
     TextView fNameII, UserNameII, EnrollmentII, BranchII, NumberII, RoomII;
     Button LogOut;
-    private AppData mSession;
+    AppData mSession;
 
     private WFragmentUserProfileInteractionListener mListener;
 
