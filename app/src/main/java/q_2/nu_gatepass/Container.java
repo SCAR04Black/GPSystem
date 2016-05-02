@@ -285,7 +285,7 @@ public class Container extends AppCompatActivity
     }
 
     @Override
-    public void onWFragmentViewUserInteractionListener(Uri uri) {
+    public void onWFragmentViewUserInteractionListener(Context mContext, UserListViewItem uItem) {
 
     }
 }

@@ -20,13 +20,11 @@ public class AppData {
 
     public static final String ULRAddGCMID = "http://gatepass.esy.es/addgcmid.php";
 
-    public static final String ULRGetImage = "http://gatepass.esy.es/getimage.php?user_name=";
+    public static final String ULRGetUsers = "http://gatepass.esy.es/getusers.php";
 
     public static SharedPreferences LoginDetails;
 
     public static SharedPreferences LoggedInUser;
-
-    public static SharedPreferences UserImages;
 
     public static SharedPreferences GCMRegisteration;
     public static final String SENT_TOKEN_TO_SERVER = "sentTokenToServer";

@@ -1,12 +1,17 @@
 package q_2.nu_gatepass;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by Pradumn K Mahanta on 03-04-2016.
@@ -36,6 +41,16 @@ public class WFragmentViewGatepassAdapter extends RecyclerView.Adapter<WFragment
         holder.inTime.setText(holder.mItem.gp_InTime);
         holder.outTime.setText(holder.mItem.gp_OutTime);
 
+        if(Objects.equals(AppData.LoggedInUser.getString(holder.mItem.gp_UserName, ""), "")){
+
+        }else{
+            Bitmap myBitmap;
+            String rUserImage = AppData.LoggedInUser.getString(holder.mItem.gp_UserName, "");
+            byte[] imgBytesData = Base64.decode(rUserImage, Base64.DEFAULT);
+            myBitmap = BitmapFactory.decodeByteArray(imgBytesData, 0, imgBytesData.length);
+            holder.studentIcon.setImageBitmap(myBitmap);
+        }
+
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,6 +72,7 @@ public class WFragmentViewGatepassAdapter extends RecyclerView.Adapter<WFragment
         public final TextView inTime;
         public final TextView outTime;
         public final TextView gp_GatepassNumber;
+        public final ImageView studentIcon;
         public GatepassListViewItem mItem;
 
         public ViewHolder(View view) {
@@ -66,6 +82,7 @@ public class WFragmentViewGatepassAdapter extends RecyclerView.Adapter<WFragment
             gp_GatepassNumber = (TextView) view.findViewById(R.id.gp_Number);
             inTime = (TextView) view.findViewById(R.id.inTime);
             outTime = (TextView) view.findViewById(R.id.outTIme);
+            studentIcon = (ImageView) view.findViewById(R.id.studentIcon);
         }
 
         @Override

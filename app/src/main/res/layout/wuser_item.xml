@@ -1,0 +1,118 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gatepass_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginLeft="5dp"
+    android:descendantFocusability="beforeDescendants">
+
+    <RelativeLayout android:layout_width="fill_parent"
+        android:id="@+id/finalitem"
+        android:layout_height="80dp">
+
+        <ImageView android:id="@+id/studentIcon"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/user_default"
+            android:scaleType="fitXY"
+            android:layout_alignParentLeft="true" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="3dp"
+            android:background="@drawable/item_frame"
+            android:layout_toRightOf="@id/studentIcon">
+
+        <RelativeLayout android:layout_width="wrap_content"
+            android:id="@+id/rData"
+            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/rUserName">
+
+                <TextView
+                    android:layout_toRightOf="@+id/UNII"
+                    android:id="@+id/rFullName"
+                    android:layout_width="wrap_content"
+                    android:text="Name"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rEnrollmentNo"
+                android:layout_below="@id/rUserName">
+
+                <TextView android:id="@+id/rEnrollKey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Number"
+                    android:textAppearance="@android:style/TextAppearance.Small" />
+
+            </RelativeLayout>
+
+            <RelativeLayout android:layout_width="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_below="@+id/rEnrollmentNo"
+                android:id="@+id/rBatchF">
+
+                <TextView
+                    android:id="@+id/rBatch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Batch"
+                    android:textAppearance="@android:style/TextAppearance.Small" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/rData">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:gravity="end"
+                android:layout_marginRight="10dp"
+                android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_horizontal|center_vertical"
+                android:gravity="end"
+                android:background="@drawable/item_frame">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_margin="10dp"
+                    android:id="@+id/rStatus"
+                    android:layout_height="wrap_content"
+                    android:text="STATUS"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+            </RelativeLayout>>
+
+    </RelativeLayout>
+
+</FrameLayout>

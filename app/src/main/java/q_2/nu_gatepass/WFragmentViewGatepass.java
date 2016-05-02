@@ -123,7 +123,7 @@ public class WFragmentViewGatepass extends Fragment {
             pDialog = new ProgressDialog(getActivity());
             pDialog.setMessage("Fetching your data...");
             pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
+            pDialog.setCancelable(false);
             pDialog.show();
 
         }
