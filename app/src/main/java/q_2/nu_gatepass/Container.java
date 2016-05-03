@@ -31,7 +31,7 @@ public class Container extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, SFragmentViewGatepass.OnSViewGatepassFragmentInteractionListener,
         WFragmentViewGatepass.OnWViewGatepassFragmentInteractionListener, SFragmentUserProfile.SFragmentUserProfileInteractionListener,
         WFragmentUserProfile.WFragmentUserProfileInteractionListener, WFragmentViewUser.WFragmentViewUserInteractionListener,
-        SFragmentApplyGatepass.SFragmentApplyGatepassFragmentInteractionListener{
+        SFragmentApplyGatepass.SFragmentApplyGatepassInteractionListener{
 
     MenuItem mPreviousMenuItem;
     String mUserType, mUserName;
@@ -280,12 +280,14 @@ public class Container extends AppCompatActivity
     }
 
     @Override
-    public void onSFragmentApplyGatepassFragmentInteraction(Uri uri) {
-
+    public void onWFragmentViewUserInteractionListener(Context mContext, UserListViewItem uItem) {
+        WCustomDialogViewUser customDialog = new WCustomDialogViewUser(mContext, uItem);
+        customDialog.show();
+        Log.d("Custom Dialog", "Opened");
     }
 
     @Override
-    public void onWFragmentViewUserInteractionListener(Context mContext, UserListViewItem uItem) {
+    public void onSFragmentApplyGatepassInteraction(Uri uri) {
 
     }
 }

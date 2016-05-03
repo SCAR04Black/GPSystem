@@ -22,6 +22,8 @@ public class AppData {
 
     public static final String ULRGetUsers = "http://gatepass.esy.es/getusers.php";
 
+    public static final String ULRUpdateStatus = "http://gatepass.esy.es/updatestatus.php";
+
     public static SharedPreferences LoginDetails;
 
     public static SharedPreferences LoggedInUser;

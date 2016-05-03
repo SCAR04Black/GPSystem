@@ -1,177 +1,161 @@
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:layout_margin="5dp"
-    tools:context=".SFragmentApplyGatepass">
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_height="wrap_content">
-
-    <TextView
-        android:id="@+id/lHeading"
-        android:layout_marginTop="5dp"
-        android:layout_width="fill_parent"
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/out_stat"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="Apply for Gate Pass"
-        android:gravity="center_vertical"
-        android:layout_gravity="center"
-        android:textColor="#565656"
-        android:textSize="30dp"
-        android:textStyle="bold" />
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_below="@id/lHeading"
-        android:id="@+id/typeSelector"
-        android:layout_margin="7dp"
-        android:textAlignment="center"
-        android:layout_gravity="center"
-        android:layout_height="45dp"/>
-
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_marginBottom="7dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginRight="7dp"
-        android:layout_below="@id/typeSelector"
-        android:id="@+id/vPurpose"
-        android:layout_gravity="center"
-        android:layout_height="wrap_content">
-
-        <AutoCompleteTextView
-            android:id="@+id/visitPurpose"
-            android:textAlignment="center"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:hint="Purpose of Visit"
-            android:inputType="textEmailAddress"
-            android:maxLines="1"
-            android:textColor="#FFFFFF"
-            android:singleLine="true" />
-
-    </FrameLayout>
-
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_marginLeft="7dp"
-        android:layout_marginRight="7dp"
-        android:layout_marginBottom="7dp"
-        android:layout_below="@id/vPurpose"
-        android:id="@+id/sTime"
-        android:layout_gravity="center"
-        android:layout_height="wrap_content">
+        tools:context=".OutStationGatepass">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:background="@drawable/item_frame"
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/iTime"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="2dp"
-                android:background="#2b72ad"
-                android:text="IN Time"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"/>
-
-            <Button
-                android:id="@+id/oTime"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="#2b72ad"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="5dp"
-                android:text="OUT Time"
-                android:layout_weight="1"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_marginLeft="7dp"
-        android:layout_marginRight="7dp"
-        android:layout_marginBottom="7dp"
-        android:layout_below="@id/sTime"
-        android:id="@+id/sDate"
-        android:layout_gravity="center"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:id="@+id/iDate"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="2dp"
-                android:background="#2b72ad"
-                android:text="IN Date"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"/>
-
-            <Button
-                android:id="@+id/oDate"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="#2b72ad"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="5dp"
-                android:text="OUT Date"
-                android:layout_weight="1"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginRight="7dp"
-        android:layout_marginBottom="7dp"
-        android:layout_below="@id/sDate"
-        android:id="@+id/rSubmit"
-        android:layout_gravity="center"
-        android:layout_height="wrap_content">
-
-            <Button
-                android:id="@+id/rSubmitR"
-                android:layout_width="wrap_content"
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:background="#2b72ad"
-                android:text="    Submit Request    "
-                android:textColor="@android:color/white"
-                android:textStyle="bold"/>
+                android:id="@+id/rUserImageView"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/item_frame"
+                android:src="@drawable/user_default"/>
 
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:text="Apply Gate Pass"
+                    android:textSize="40sp" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/purpose"
+                    android:layout_width="fill_parent"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Purpose of Visit"
+                    android:inputType="textMultiLine"
+                    android:lines="1"
+                    android:minLines="1" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/destination"
+                    android:layout_width="fill_parent"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:hint="Destination"
+                    android:inputType="textMultiLine"
+                    android:lines="1"
+                    android:minLines="1" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+
+                    android:weightSum="1"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/out_time"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:background="#2b72ad"
+                        android:layout_weight=".5"
+                        android:text="OUT TIME"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"/>
+
+                    <Button
+                        android:id="@+id/in_time"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:background="#2b72ad"
+                        android:layout_weight=".5"
+                        android:text="IN TIME"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:weightSum="1"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/out_date"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:background="#2b72ad"
+                        android:layout_weight=".5"
+                        android:text="OUT DATE"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"/>
+
+                    <Button
+                        android:id="@+id/in_date"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:background="#2b72ad"
+                        android:layout_weight=".5"
+                        android:text="IN DATE"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/request"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="#2b72ad"
+                    android:text="Submit"
+                    android:layout_marginBottom="25dp"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+        </LinearLayout>
 
     </FrameLayout>
-
-
-    </RelativeLayout>
-
-</FrameLayout>
+</ScrollView>
